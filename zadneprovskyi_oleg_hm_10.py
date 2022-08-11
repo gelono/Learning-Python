@@ -17,17 +17,20 @@ def user_telephone(code: str):
 my_number = user_telephone('+044')
 my_number('838372893')
 
+
 # Task-2 Написать функцию которая будет у пользователя брать python обект в любом виде и выводить все его не магические методы в списке.
 # Написать декторатор который будет выводить колличество методов в объекте.
-def decor(function):
-    """Amount of the methods in an object"""
-    def wrapper(obj):
-        methods = function(obj)
-        amount = len(methods)
-        return f'Amount of the methods in your object {obj} is {amount}'
-    return wrapper
 
-@decor        
+def decor(str_obj: str):
+    def inner_func(function):        
+        def wrapper(obj):
+            methods = function(obj)
+            amount = len(methods)
+            return str_obj + ' ' + str(amount)
+        return wrapper
+    return inner_func
+
+@decor('need to learn')        
 def object_methods(obj):
     list_of_m = dir(obj)
     new_list = []
