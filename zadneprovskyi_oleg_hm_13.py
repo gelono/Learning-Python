@@ -38,3 +38,29 @@ class My_class:
     def clear_values(self):
         self.val_1 = 0
         self.val_2 = 0     
+#____________________________________________________ 
+class New_class():
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    @property
+    def name_person(self):
+        return self.name
+    
+    @name_person.setter
+    def name_person(self, name):
+        self.name = name
+    
+    @name_person.deleter
+    def name_person(self):
+        self.name = None
+        
+if __name__ == '__main__':
+    a = New_class("Oleg", 35)
+    b = a.name
+    print(b)
+    a.name = "Alex"
+    print(a.name)
+    del a.name
+    print(a.name)
